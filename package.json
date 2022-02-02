@@ -1,0 +1,29 @@
+{
+    "name": "blog",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server/index.js",
+    "scripts": {
+        "start": "cross-env NODE_ENV=production node server/index.js",
+        "dev-server": "cross-env NODE_ENV=development nodemon server/index.js",
+        "dev-client": "cd client/ && npm start",
+        "build": "cd client/ && npm install && npm run build"
+    },
+    "cacheDirectories": [
+        "node_modules",
+        "client/node_modules"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Lesuz/Blog.git"
+    },
+    "author": "Susanna Hämäläinen",
+    "bugs": {
+        "url": "https://github.com/Lesuz/Blog/issues"
+    },
+    "homepage": "https://github.com/Lesuz/Blog#readme",
+    "dependencies": {
+        "dotenv": "^15.0.0",
+        "express": "^4.17.2"
+    }
+}
