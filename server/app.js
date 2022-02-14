@@ -14,10 +14,10 @@ app.use(express.urlencoded({
 
 
 
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
     res.send('Hello World!!!');
 });
-
+*/
 
 const articleRouter = require('./controllers/articles')
 app.use('api/articles/all', articleRouter)
