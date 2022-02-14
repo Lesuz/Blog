@@ -1,0 +1,112 @@
+nav {
+    background-color: #475569;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    color: #FFF;
+    z-index: 99;
+    height: 60px;
+    width: 80%;
+    /* might change position*/
+}
+
+.menu-icon {
+    display: none;
+}
+
+.logo {
+    font-size: 30px;
+}
+
+.menu-links {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-links li a {
+    text-decoration: none ;
+    color: white;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 5px 20px;
+    margin: 20px 0px;
+    border-right: 1px solid white;
+}
+
+.menu-links li:last-child a {
+    border-right: none;
+}
+
+.menu-links li a:hover{
+    background-color: #657994;
+    border-radius: 2px;
+    transition: all 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 800px) {
+
+
+}
+
+@media screen and (max-width: 600px) {
+    nav {
+        background-color: transparent;
+        color: black;
+        height: 60px;
+    }
+    .menu-icon {
+        display: block;
+        background-color: #475569;
+        padding: 15px;
+        border-radius: 50%;
+        position: relative;
+        
+    }
+    .menu-links {
+        flex-direction: column;
+        justify-content: left;
+        align-items:flex-start;
+        width: 100%;
+        position: absolute;
+        background-color: #475569;
+        padding: 20px;
+        right: 0;
+        top: 60px;
+        border-bottom-right-radius: 150px;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .menu-links.close {
+        right: 100%;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .menu-links li {
+        padding: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    .menu-links li a {
+        border-right: none;
+        font-size: 30px;
+    }
+    .logo {
+        font-weight: bold;
+        padding: 10px 20px;
+        margin: 0px;
+    }
+
+    .menu-icon .fa-times {
+        transform: rotate(360deg);
+        transition: all 0.2s ease-in-out;
+    }
+    .menu-icon .fa-bars {
+        transform: rotate(180deg);
+        transition: all 0.2s ease-in-out;
+    }
+}

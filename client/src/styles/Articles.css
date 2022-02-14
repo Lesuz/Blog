@@ -1,0 +1,48 @@
+.articles {
+    margin-top: 100px ;
+}
+
+.searchbar {
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.searchbar i {
+    position: absolute;
+}
+
+i {
+    padding: 10px;
+    color: blue;
+    min-width: 50px;
+    text-align: center;
+}
+
+.searchbar input {
+    width: 300px;
+    color: black;
+    border: none;
+    background: #C4C4C4;
+    text-align: center;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+::placeholder {
+    color: #475569;
+}
+
+.articlecontent {
+    margin-top: 50px;
+}
+
+.allarticles {
+    text-align: left;
+    width: 100%;
+    padding: 0px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+}

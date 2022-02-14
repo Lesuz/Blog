@@ -1,0 +1,78 @@
+.homepage {
+    justify-content: center;
+    top: 0;
+    width: 100%;
+}
+
+.banner {
+    height: 100%;
+    width: 70%;
+    margin: auto;
+}
+
+.bannerimage {
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.latestarticle {
+    background-color: #692A6C;
+    position: absolute;
+    padding: 20px;
+    top: 36%;
+    left: 20%;
+    width: 18%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-align: left;
+}
+.latestarticle h1 {
+    padding: 10px 0px;
+}
+
+.latestarticle a {
+    text-decoration: none;
+    color: blanchedalmond;
+}
+
+.content {
+    width: 70%;
+    height: auto;
+    margin: auto;
+    padding-top: 200px;
+}
+
+.content h2 {
+    margin: 40px ;
+    font-weight: 800;
+}
+
+.populararticles {
+    text-align: left;
+    width: 100%;
+    padding: 0px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.articlebanner {
+    border-radius: 5px;
+    height: 300px;
+    padding: 30px;
+    color: white;
+}
+
+.articlebanner a {
+    text-decoration: none;
+    color: blanchedalmond;
+}
+
+
+.populararticles h3 {
+    margin: 20px 0px;;
+}

@@ -3,15 +3,44 @@ const express = require('express')
 const app = express()
 const config = require('./config')
 const path = require('path')
-// const cors = require('cors') im not sure this is needed
+const mongoose = require('mongoose')
+const cors = require('cors') //im not sure this is needed
 
 // parse json bodies sent by api clients
 app.use(express.json())
-// app.use(cors())
+app.use(express.urlencoded({
+    extended: true
+}));
 
 
-// routes 
 
+app.get('/', (req, res) => {
+    res.send('Hello World!!!');
+});
+
+
+const articleRouter = require('./controllers/articles')
+app.use('api/articles/all', articleRouter)
+
+
+
+
+// connecting to database
+mongoose.connect(config.MONGODB_URI, {});
+
+var db = mongoose.connection;
+
+// Making sure the connection is working
+db.on("error", function () {
+    console.log("Connection error!")
+});
+
+db.once("open", function () {
+    console.log("Connection successful!");
+});
+
+
+app.use(cors())
 
 // in production, serve the react-app build to client
 if (process.env.NODE_ENV === 'production') {
