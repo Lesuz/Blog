@@ -1,17 +1,53 @@
 import '../styles/Articles.css'
 import 'font-awesome/css/font-awesome.min.css'
+import { useEffect, useState } from 'react'
+
+const Article = (props) => {
+    return (
+        <div>
+            <h3>{props.title}</h3>
+            <p>{props.content}</p>
+            <a href='#'>Read more...</a>
+        </div>
+    )
+}
 
 const Articles = () => {
 
-    const dummyArticlesAll = [
-        { "title": "Article 75", "content": "Short description about the article. Idea is to give the reader anidea what the article is about and to make it interesting so that as -many as possible will read it. ", "image": "https://i.imgur.com/lGpjoXP.jpeg" },
-        { "title": "Article 74", "content": "Short description about the article. Idea is to give the reader anidea what the article is about and to make it interesting so that as -many as possible will read it. ", "image": "https://i.imgur.com/lGpjoXP.jpeg" },
-        { "title": "Article 73", "content": "Short description about the article. Idea is to give the reader anidea what the article is about and to make it interesting so that as -many as possible will read it. ", "image": "https://i.imgur.com/lGpjoXP.jpeg" },
-        { "title": "Article 72", "content": "Short description about the article. Idea is to give the reader anidea what the article is about and to make it interesting so that as -many as possible will read it. ", "image": "https://i.imgur.com/lGpjoXP.jpeg" },
-        { "title": "Article 71", "content": "Short description about the article. Idea is to give the reader anidea what the article is about and to make it interesting so that as -many as possible will read it. ", "image": "https://i.imgur.com/lGpjoXP.jpeg" },
-        { "title": "Article 70", "content": "Short description about the article. Idea is to give the reader anidea what the article is about and to make it interesting so that as -many as possible will read it. ", "image": "https://i.imgur.com/lGpjoXP.jpeg" },
+    /*const dummyArticles = [
+        { "title": "My first blog post", "content": "This is the content of my first blog post.", "image": "https://i.imgur.com/lGpjoXP.jpeg" },
+        { "title": "My second blog post", "content": "This is the content of my second blog post.", "image": "https://i.imgur.com/lGpjoXP.jpeg" },
     ]
+    */
 
+    const [searchedArticle, setSearchedArticle] = useState('')
+    const [articles, setArticles] = useState([])
+    // const [filteredArticles, setFilteredArticles] = useState([])
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await fetch(
+                'http://localhost:3001/api/articles/all',
+            )
+            const json = await res.json()
+            setArticles(json)
+            console.log(articles)
+        }
+        fetchData()
+    })
+
+    const handleChange = (event) => {
+        setSearchedArticle(event.target.value)
+    }
+
+    /*useEffect(() => {
+        let articlesCopy = [...articles]
+        articlesCopy = articlesCopy.filter(article =>
+            article.title.toLowerCase().includes(article.toLowerCase()))
+        setFilteredArticles(articlesCopy)
+    }, [searchedArticle, articles])
+*/
     return (
         <div className='articles'>
             <div className='searchbar'>
@@ -19,11 +55,13 @@ const Articles = () => {
                 <input
                     type="text"
                     placeholder="Search for an article..."
+                    value={searchedArticle}
+                    onChange={handleChange}
                 />
             </div>
             <div className='articlecontent'>
                 <div className='allarticles'>
-                    {dummyArticlesAll.map(article =>
+                    {articles.map(article =>
                         <div style={{
                             backgroundImage: 'url(' + article.image + ')'
                         }} className='articlebanner'>

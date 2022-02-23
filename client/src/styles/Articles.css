@@ -1,7 +1,8 @@
 .articles {
     margin-top: 100px ;
+    width: 100%;
+    justify-content: center;
 }
-
 .searchbar {
     padding: 20px;
     justify-content: center;
@@ -14,7 +15,7 @@
 
 i {
     padding: 10px;
-    color: blue;
+    color: rgb(0, 0, 0);
     min-width: 50px;
     text-align: center;
 }
@@ -35,6 +36,10 @@ i {
 
 .articlecontent {
     margin-top: 50px;
+    width: 70%;
+    height: auto;
+    margin: auto;
+    padding-top: 100px;
 }
 
 .allarticles {
@@ -45,4 +50,12 @@ i {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     grid-auto-rows: minmax(100px, auto);
+}
+
+.allarticles a {
+    text-decoration: none;
+    color: blanchedalmond;
+    text-align: right;
+    padding-top: 20px;
+    padding-right: 10px;
 }

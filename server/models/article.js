@@ -6,6 +6,10 @@ const ArticleSchema = new Schema({
         type: String,
         require: [true, 'Title required.']
     },
+    description: {
+        type: String,
+        required: [true, 'Please add a short description about the article.']
+    },
     content: {
         type: String,
         require: [true, 'Content required.']
@@ -17,7 +21,7 @@ const ArticleSchema = new Schema({
     authorId: {
         type: Number
     },
-    clicked: {
+    clickrate: {
         type: Number
     }
 })

@@ -4,30 +4,51 @@ const articleRouter = require('express').Router()
 const Article = require('../models/article')
 
 
+articleRouter.get('/all', async (req, res,) => {
+    /*Article.find({},)
+        .then((data) => res.json(data))
+        .catch(next)
+    */
+
+    const results = await Article.find({})
+
+    console.log(results)
+    res.status(200).json(results)
+})
+
+articleRouter.post('/all', (req, res) => {
 
 
-articleRouter.post('/api/articles/all', (res, req) => {
-    if (req.body) {
-        Article.create(req.body)
-            .then(data => res.json(data))
-    } else {
-        res.json({
-            error: 'The input field is empty'
-        })
-    }
+    const title = req.body.title
+    const description = req.body.description
+    const content = req.body.content
+    const authorId = req.body.authorId
+    const clickrate = req.body.clickrate
+
+    const article = new Article({
+        title: 'title',
+        description: 'description',
+        content: 'content',
+        release_date: new Date(),
+        authorId: 'authorId',
+        clickrate: 'clickrate'
+    })
+
+    res.status(200).json(article)
+
+    article.save()
+})
+
+articleRouter.get('/:id', (req, res) => {
 
 })
 
-articleRouter.get('/api/articles/:id', (res, req) => {
+articleRouter.post('/:id', (req, res) => {
 
 })
 
-articleRouter.post('/api/articles/:id', (res, req) => {
-
-})
-
-// maybe /api/articles/delete/:id
-articleRouter.delete('/api/articles/:id', async (res, req) => {
+// delete/:id
+articleRouter.delete('/:id', async (req, res) => {
 
     let id = req.params.id
 

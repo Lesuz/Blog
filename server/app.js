@@ -20,7 +20,7 @@ app.use(express.urlencoded({
 */
 
 const articleRouter = require('./controllers/articles')
-app.use('api/articles/all', articleRouter)
+app.use('/api/articles', articleRouter)
 
 
 
