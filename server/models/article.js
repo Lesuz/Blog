@@ -10,16 +10,20 @@ const ArticleSchema = new Schema({
         type: String,
         required: [true, 'Please add a short description about the article.']
     },
+    image: {
+        type: String,
+        required: [true, 'Please add image.']
+    },
     content: {
         type: String,
         require: [true, 'Content required.']
     },
     release_date: {
         type: Date,
-        require: [true, 'Please add date.']
+        require: [true]
     },
     authorId: {
-        type: Number
+        type: Schema.Types.ObjectId
     },
     clickrate: {
         type: Number
@@ -27,5 +31,12 @@ const ArticleSchema = new Schema({
 })
 
 const Article = mongoose.model('articles', ArticleSchema)
+
+ArticleSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+        returnedObject.id = returnedObject._id.toString()
+        delete returnedObject._id
+    }
+})
 
 module.exports = Article

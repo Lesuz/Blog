@@ -1,41 +1,26 @@
 import '../styles/Articles.css'
 import 'font-awesome/css/font-awesome.min.css'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 
-const Article = (props) => {
-    return (
-        <div>
-            <h3>{props.title}</h3>
-            <p>{props.content}</p>
-            <a href='#'>Read more...</a>
-        </div>
-    )
-}
+import ArticleCard from '../components/ArticleCard'
 
 const Articles = () => {
-
-    /*const dummyArticles = [
-        { "title": "My first blog post", "content": "This is the content of my first blog post.", "image": "https://i.imgur.com/lGpjoXP.jpeg" },
-        { "title": "My second blog post", "content": "This is the content of my second blog post.", "image": "https://i.imgur.com/lGpjoXP.jpeg" },
-    ]
-    */
 
     const [searchedArticle, setSearchedArticle] = useState('')
     const [articles, setArticles] = useState([])
     // const [filteredArticles, setFilteredArticles] = useState([])
 
+    const getArticles = () => {
+        axios.get('/api/articles/all')
+            .then((response) => {
+                console.log(response.data)
+                const allArticles = response.data
+                setArticles(allArticles)
+            })
+    }
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch(
-                'http://localhost:3001/api/articles/all',
-            )
-            const json = await res.json()
-            setArticles(json)
-            console.log(articles)
-        }
-        fetchData()
-    })
+    useEffect(() => getArticles(), [])
 
     const handleChange = (event) => {
         setSearchedArticle(event.target.value)
@@ -51,7 +36,7 @@ const Articles = () => {
     return (
         <div className='articles'>
             <div className='searchbar'>
-                <i class='fa fa-search'></i>
+                <i className='fa fa-search'></i>
                 <input
                     type="text"
                     placeholder="Search for an article..."
@@ -62,13 +47,7 @@ const Articles = () => {
             <div className='articlecontent'>
                 <div className='allarticles'>
                     {articles.map(article =>
-                        <div style={{
-                            backgroundImage: 'url(' + article.image + ')'
-                        }} className='articlebanner'>
-                            <h3>{article.title}</h3>
-                            <p>{article.content}</p>
-                            <a href='#'>Read more...</a>
-                        </div>
+                        <ArticleCard key={article.id} article={article} />
                     )}
                 </div>
             </div>

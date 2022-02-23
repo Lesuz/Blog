@@ -4,39 +4,38 @@ const articleRouter = require('express').Router()
 const Article = require('../models/article')
 
 
-articleRouter.get('/all', async (req, res,) => {
+articleRouter.get('/all', async (req, res) => {
     /*Article.find({},)
         .then((data) => res.json(data))
         .catch(next)
     */
 
-    const results = await Article.find({})
+    const results = await Article.find()
 
     console.log(results)
     res.status(200).json(results)
 })
 
-articleRouter.post('/all', (req, res) => {
-
-
-    const title = req.body.title
-    const description = req.body.description
-    const content = req.body.content
-    const authorId = req.body.authorId
-    const clickrate = req.body.clickrate
+articleRouter.post('/submit', async (req, res) => {
+    const body = req.body
 
     const article = new Article({
-        title: 'title',
-        description: 'description',
-        content: 'content',
+        title: body.title,
+        description: body.description,
+        content: body.content,
+        image: body.image,
         release_date: new Date(),
-        authorId: 'authorId',
-        clickrate: 'clickrate'
+        authorId: '5f87ac56842e500d044853dd',
+        clickrate: 0
     })
 
-    res.status(200).json(article)
-
-    article.save()
+    try {
+        await article.save()
+        res.status(200).json(article)
+    } catch (err) {
+        console.error(err)
+        res.status(500).json(err)
+    }
 })
 
 articleRouter.get('/:id', (req, res) => {
@@ -47,7 +46,6 @@ articleRouter.post('/:id', (req, res) => {
 
 })
 
-// delete/:id
 articleRouter.delete('/:id', async (req, res) => {
 
     let id = req.params.id
