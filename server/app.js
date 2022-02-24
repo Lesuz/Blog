@@ -12,16 +12,11 @@ app.use(express.urlencoded({
     extended: true
 }));
 
-
-
-/*app.get('/', (req, res) => {
-    res.send('Hello World!!!');
-});
-*/
-
 const articleRouter = require('./controllers/articles')
 app.use('/api/articles', articleRouter)
 
+const newsRouter = require('./controllers/news')
+app.use('/api/othernews', newsRouter)
 
 
 

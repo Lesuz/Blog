@@ -1,18 +1,44 @@
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 import '../styles/Othernews.css'
+
+const moment = require('moment')
+
+const News = ({ news }) => {
+
+    return (
+        <div className='news'>
+            <h2>{news.title}</h2>
+            <h3>{moment(news.release_date).format('DD.MM.YYYY')}</h3>
+            <p>{news.content}</p>
+        </div>
+    )
+}
 
 const Othernews = () => {
 
-    const dummynews = [
-        { "title": "News 1", "date": "XX.XX.XXXX", "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada cursus magna, a molestie libero dignissim a. Suspendisse accumsan gravida nisi egestas pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada cursus magna, a molestie libero dignissim a. Suspendisse accumsan gravida nisi egestas pellentesque. " },
-        { "title": "News 2", "date": "XX.XX.XXXX", "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada cursus magna, a molestie libero dignissim a. Suspendisse accumsan gravida nisi egestas pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada cursus magna, a molestie libero dignissim a. Suspendisse accumsan gravida nisi egestas pellentesque. " },
-        { "title": "News 3", "date": "XX.XX.XXXX", "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada cursus magna, a molestie libero dignissim a. Suspendisse accumsan gravida nisi egestas pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada cursus magna, a molestie libero dignissim a. Suspendisse accumsan gravida nisi egestas pellentesque. " },
-    ]
+    const [news, setNews] = useState([])
+
+    const getNews = () => {
+        axios.get('/api/othernews')
+            .then((response) => {
+                console.log(response.data)
+                const allNews = response.data
+                allNews.sort((a, b) => {
+                    return Date.parse(b.release_date) - Date.parse(a.release_date)
+                })
+                setNews(allNews)
+            })
+    }
+
+    useEffect(() => getNews(), [])
 
     return (
         <div className="othernews">
             <h1>Other News</h1>
             <div className='othernewsarticles'>
-                {dummynews.map(news => <div className='news'><h2>{news.title}</h2><h3>{news.date}</h3><p>{news.content}</p></div>)}
+                {news.map(news =>
+                    <News key={news.id} news={news} />)}
             </div>
         </div>
     )

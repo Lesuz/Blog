@@ -1,25 +1,32 @@
 const mongoose = require('mongoose')
-/*
-const articleSchema = mongoose.Schema({
-    title: String,
-    content: String,
-    release_date: Date,
-    author: authorId
-}
-*/
-const Othernews = mongoose.model(
-    "News",
-    {
-        title: String,
-        content: String,
-        release_date: Date,
-        author: authorId
+const Schema = mongoose.Schema
+
+
+const NewsSchema = new Schema({
+    title: {
+        type: String,
+        require: [true, 'Title required.']
     },
-    // name of collection
-    "News"
-);
+    content: {
+        type: String,
+        require: [true, 'Content required.']
+    },
+    release_date: {
+        type: Date,
+        require: [true]
+    },
+    authorId: {
+        type: Schema.Types.ObjectId
+    }
+})
 
+const News = mongoose.model('news', NewsSchema)
 
-// var Article = mongoose.model("Article", articleSchema)
+NewsSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+        returnedObject.id = returnedObject._id.toString()
+        delete returnedObject._id
+    }
+})
 
-module.exports = Othernews
+module.exports = News

@@ -5,10 +5,6 @@ const Article = require('../models/article')
 
 
 articleRouter.get('/all', async (req, res) => {
-    /*Article.find({},)
-        .then((data) => res.json(data))
-        .catch(next)
-    */
 
     const results = await Article.find()
 
