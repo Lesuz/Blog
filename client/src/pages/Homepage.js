@@ -2,6 +2,7 @@ import handcuffed from '../images/handcuffs.jpg'
 import '../styles/Homepage.css'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import ArticleCard from '../components/ArticleCard'
 
@@ -34,7 +35,10 @@ const Homepage = () => {
                     {articles.length >= 1 && <div>
                         <h3>{articles[0].title}</h3>
                         <p>{articles[0].description}</p>
-                        <a href='#'>Read more...</a>
+                        <Link className="readmorelink" to={{
+                            pathname: "/article",
+                            state: articles[0]
+                        }}>Read more...</Link>
                     </div>}
                 </div>
             </div>

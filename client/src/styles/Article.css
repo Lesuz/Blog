@@ -1,0 +1,23 @@
+.articlecontent {
+    margin-top: 70px;
+}
+
+.title {
+    color: #692A6C;
+    font-size: 35px;
+}
+
+.date {
+    color: #BB9BB0;
+    font-size: 25px;
+    font-style: italic;
+}
+
+.content {
+    padding-top: 0px;
+    margin-top: 150px;
+    text-align: left;
+    font-weight: 600;
+    line-height: 1.6;
+    font-size: 18px;
+}

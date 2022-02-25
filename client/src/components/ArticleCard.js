@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const ArticleCard = ({ article }) => {
     return (
         <div
@@ -9,7 +11,10 @@ const ArticleCard = ({ article }) => {
         >
             <h3>{article.title}</h3>
             <p>{article.description}</p>
-            <a href='#'>Read more...</a>
+            <Link to={{
+                pathname: "/article",
+                state: article
+            }}>Read more...</Link>
         </div>
     )
 }
