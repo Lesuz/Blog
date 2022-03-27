@@ -9,7 +9,7 @@ const Articles = () => {
 
     const [searchedArticle, setSearchedArticle] = useState('')
     const [articles, setArticles] = useState([])
-    // const [filteredArticles, setFilteredArticles] = useState([])
+    const [filteredArticles, setFilteredArticles] = useState([])
 
     const getArticles = () => {
         axios.get('/api/articles/all')
@@ -26,13 +26,13 @@ const Articles = () => {
         setSearchedArticle(event.target.value)
     }
 
-    /*useEffect(() => {
+    useEffect(() => {
         let articlesCopy = [...articles]
         articlesCopy = articlesCopy.filter(article =>
-            article.title.toLowerCase().includes(article.toLowerCase()))
+            article.title.toLowerCase().includes(searchedArticle.toLowerCase()))
         setFilteredArticles(articlesCopy)
     }, [searchedArticle, articles])
-*/
+
     return (
         <div className='articles'>
             <div className='searchbar'>
@@ -46,7 +46,7 @@ const Articles = () => {
             </div>
             <div className='articlecontent'>
                 <div className='allarticles'>
-                    {articles.map(article =>
+                    {filteredArticles.map(article =>
                         <ArticleCard key={article.id} article={article} />
                     )}
                 </div>

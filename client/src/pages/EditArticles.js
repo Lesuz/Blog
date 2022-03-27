@@ -7,8 +7,9 @@ import 'font-awesome/css/font-awesome.min.css'
 
 const EditArticles = () => {
 
+    const [searchedArticle, setSearchedArticle] = useState('')
     const [articles, setArticles] = useState([])
-    // const [filteredArticles, setFilteredArticles] = useState([])
+    const [filteredArticles, setFilteredArticles] = useState([])
 
     const getArticles = () => {
         axios.get('/api/articles/all')
@@ -31,6 +32,19 @@ const EditArticles = () => {
     }
 
     useEffect(() => getArticles(), [])
+
+    const handleChange = (event) => {
+        setSearchedArticle(event.target.value)
+    }
+
+    useEffect(() => {
+        let articlesCopy = [...articles]
+        articlesCopy = articlesCopy.filter(article =>
+            article.title.toLowerCase().includes(searchedArticle.toLowerCase()))
+        setFilteredArticles(articlesCopy)
+    }, [searchedArticle, articles])
+
+
     return (
         <div className='editarticleswrapper'>
             <div className='editarticlesearch'>
@@ -42,11 +56,11 @@ const EditArticles = () => {
                 <Link to="/newarticle">
                     <button>New Article</button>
                 </Link>
-                <input placeholder='Search by title' />
+                <input placeholder='Search by title' value={searchedArticle} onChange={handleChange} />
             </div>
             <div className='editarticlecontent'>
                 <div className='editallarticles'>
-                    {articles.map(article =>
+                    {filteredArticles.map(article =>
                         <EditArticleCard key={article.id} article={article} deleteArticle={(() => deleteArticle(article.id))} />
                     )}
                 </div>
