@@ -1,8 +1,12 @@
 footer {
     margin-top: 20px;
-    background-color: aquamarine;
+    background: #C4C4C4;
     position: relative;
     left: 0;
     bottom: 0;
     right: 0;
+}
+
+footer p {
+    padding: 20px;
 }

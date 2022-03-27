@@ -4,7 +4,7 @@ const Footer = () => {
 
     return (
         <footer>
-            <p>&copy; Susanna Hämäläinen</p>
+            <p>&copy; 2022 Susanna Hämäläinen</p>
         </footer>
     )
 
