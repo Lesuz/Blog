@@ -13,6 +13,7 @@ articleRouter.get('/all', async (req, res) => {
 })
 
 articleRouter.post('/submit', async (req, res) => {
+
     const body = req.body
 
     const article = new Article({
@@ -34,7 +35,19 @@ articleRouter.post('/submit', async (req, res) => {
     }
 })
 
-articleRouter.get('/:id', (req, res) => {
+articleRouter.get('/:id', async (req, res) => {
+
+    const id = req.params.id
+    console.log(id)
+
+    try {
+        const results = await Article.findById(id)
+        console.log(results)
+        res.status(200).json(results)
+
+    } catch (err) {
+        res.status(404).json({ message: 'No article found.' })
+    }
 
 })
 
@@ -46,7 +59,7 @@ articleRouter.delete('/:id', async (req, res) => {
 
     let id = req.params.id
 
-    let result = await Article.findByIdAndDelete(id, (err, results) => {
+    await Article.findByIdAndDelete(id, (err, results) => {
         if (err) console.log(err)
 
         res.status(200).json(results)

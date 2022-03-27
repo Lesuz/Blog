@@ -35,10 +35,7 @@ const Homepage = () => {
                     {articles.length >= 1 && <div>
                         <h3>{articles[0].title}</h3>
                         <p>{articles[0].description}</p>
-                        <Link className="readmorelink" to={{
-                            pathname: "/article",
-                            state: articles[0]
-                        }}>Read more...</Link>
+                        <Link className="readmorelink" to={`article/${articles[0].id}`} >Read more...</Link>
                     </div>}
                 </div>
             </div>

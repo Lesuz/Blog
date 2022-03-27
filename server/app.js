@@ -18,7 +18,11 @@ app.use('/api/articles', articleRouter)
 const newsRouter = require('./controllers/news')
 app.use('/api/othernews', newsRouter)
 
-
+app.use('/api/signin', (req, res) => {
+    res.send({
+        token: 'test123'
+    })
+})
 
 // connecting to database
 mongoose.connect(config.MONGODB_URI, {});

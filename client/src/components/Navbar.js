@@ -1,5 +1,6 @@
 import '../styles/Navbar.css'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 // font-awesome css file needed so the fonts work in classname
 import 'font-awesome/css/font-awesome.min.css'
@@ -13,7 +14,7 @@ const Navbar = () => {
     const menuList = MenuList.map(({ url, title }, index) => {
         return (
             <li key={index}>
-                <a href={url}>{title}</a>
+                <Link to={url}>{title}</Link>
             </li >
         )
     })

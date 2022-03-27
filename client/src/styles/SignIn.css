@@ -1,0 +1,32 @@
+.signin-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 150px;
+}
+
+.signin-wrapper h1 {
+    margin: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    padding: 10px;
+}
+input {
+    padding: 5px;
+    width: 200px;
+}
+
+button {
+    color: white;
+    background: #692A6C;
+    padding: 5px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 17px;
+}

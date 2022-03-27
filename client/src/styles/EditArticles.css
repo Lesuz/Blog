@@ -1,0 +1,56 @@
+.editarticleswrapper {
+    width: 80%;
+    margin: auto;
+    padding-top: 30px;
+}
+.editarticlecontent {
+    padding-top: 30px;
+}
+.editarticlesearch {
+    display: flex;
+    flex-direction: column;
+}
+.editarticlesearch h3 {
+    margin-top: 20px;
+    font-size: 20px;
+}
+.editarticlesearch button {
+    width: 180px;
+    margin: 20px auto;
+}
+.editarticlesearch input {
+    margin: 20px auto;
+}
+.editarticle {
+    background-color: #BB9BB0 ;
+    padding: 10px 20px;
+    text-align: left;
+    border-radius: 5px;
+}
+.editarticlecard {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    align-items: center;
+}
+.editarticlecard a {
+    width: 80%;
+}
+.editarticlecard i {
+    width: 20%;
+    padding: 10px;
+}
+
+.links {
+    font-size: 20px;
+    background-color: #C4C4C4;
+    width: 50%;
+    margin: 30px auto; 
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.links a {
+    margin: 40px;
+
+}
