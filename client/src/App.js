@@ -1,5 +1,6 @@
 import './App.css';
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { useState } from 'react';
 
@@ -35,6 +36,7 @@ function App() {
                     <Route path="/newnews" component={NewNews} />
                     <Route path="/*" component={Homepage} />
                 </Switch>
+                <Footer />
             </Router>
         </div>
     );

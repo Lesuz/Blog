@@ -3,7 +3,7 @@ import banner from '../images/aboutpagebanner.jpg'
 
 const About = () => {
     return (
-        <div>
+        <div className='aboutpagewrapper'>
             <div className='aboutbanner'>
                 <img src={banner}></img>
                 <p>About This Blog</p>
