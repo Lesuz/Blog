@@ -22,3 +22,26 @@
     line-height: 1.6;
     font-size: 18px;
 }
+
+@media screen and (max-width: 600px) {
+     .articlecontent {
+         margin-top: 0px;
+     }
+
+     .title {
+         padding-top: 100px;
+         font-size: 25px;
+         width: 80%;
+         margin: auto;
+     }
+
+     .date {
+         font-size: 17px;
+     }
+
+     .content {
+         width: 90%;
+         margin: auto;
+        padding-top: 30px;
+     }
+}

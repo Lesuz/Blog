@@ -49,7 +49,7 @@ const Article = () => {
                     <h3 className="title">{article.title}</h3>
                     <p className="date">{moment(article.release_date).format('DD.MM.YYYY')}</p>
                     {/*<p className="content">{article.content}</p> */}
-                    <MDEditor.Markdown source={article.content}></MDEditor.Markdown>
+                    <MDEditor.Markdown className="content" source={article.content}></MDEditor.Markdown>
                 </div>
             </div>
         )
