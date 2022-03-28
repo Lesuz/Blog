@@ -20,6 +20,11 @@ nav {
 
 .logo {
     font-size: 30px;
+    color: #FFF;
+}
+
+.logo a {
+    color: #FFF;
 }
 
 .menu-links {
@@ -62,7 +67,7 @@ nav {
         margin-top: 0;
         position: absolute;
     }
-    
+
     .fa-bars {
         color: rgb(255, 255, 255);
     }
