@@ -11,9 +11,11 @@ const ArticleCard = ({ article }) => {
                 className='articlebanner'
                 key={article.id}
             >
-                <h3>{article.title}</h3>
-                <p>{article.description}</p>
-                <p className='readmorelink'>Read more...</p>
+                <div className='cardtext'>
+                    <h3>{article.title}</h3>
+                    <p>{article.description}</p>
+                    <p className='readmorelink'>READ MORE</p>
+                </div>
             </div>
         </Link>
     )

@@ -67,3 +67,60 @@
     font-weight: 700;
     padding: 10px;
 }
+
+@media screen and (max-width: 600px) {
+    .aboutbanner {
+        width: 100%;
+    }
+
+    .aboutbanner img {
+        height: 400px;
+    }
+    .aboutbanner p {
+        font-size: 30px;
+        padding: 10px 40px;
+        width: 300px;
+    }
+    .about-content {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 100%;
+    }
+    .whatblog {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        padding: 0px;
+    }
+
+    .whatblog h3 {
+        width: 100%;
+    }
+    .whatblog p {
+        text-align: center;
+        width: 80%;
+        margin: auto;
+    }
+
+    .whyblog {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        padding: 0px;
+    }
+
+    .whyblog h3 {
+        width: 100%;
+    }
+    .whyblog p {
+        text-align: center;
+        width: 80%;
+        margin: auto;
+    } 
+}

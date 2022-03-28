@@ -25,12 +25,16 @@ const Navbar = () => {
     return (
         <nav>
             <div className='menu-icon' onClick={handleClick}>
+                {/*<div className='fa-stack' size={20} onClick={handleClick}>
+                <i className='fa fa-circle fa-stack-2x icon-background'></i> */}
                 <i className={toggleMenu ? 'fa fa-times' : 'fa fa-bars'}></i>
             </div>
             <div className='logo'>
-                LOGO
+                <Link to="/homepage">
+                    LOGO
+                </Link>
             </div>
-            <ul className={toggleMenu ? 'menu-links' : 'menu-links close'} >
+            <ul className={toggleMenu ? 'menu-links' : 'menu-links close'} onClick={() => setToggleMenu(prevState => !prevState)}>
                 {menuList}
             </ul>
         </nav >

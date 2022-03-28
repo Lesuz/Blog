@@ -4,7 +4,9 @@
     width: 100%;
     margin-bottom: 200px;
 }
-
+a {
+    text-decoration: none;
+}
 .banner {
     height: 100%;
     width: 70%;
@@ -32,10 +34,23 @@
     color: white;
     text-align: left;
 }
-.latestarticle h1 {
+
+.latestarticlecontent {
+    display: flex;
+    flex-direction: column;
+}
+.latestarticlecontent a{
+    margin-top: auto;
+}
+.latestarticlecontent h3 {
     padding: 10px 0px;
     font-size: 20px;
 }
+.latestarticlecontent p {
+
+}
+
+
 
 .readmorelink {
     text-decoration: none;
@@ -43,16 +58,18 @@
     text-align: right;
     padding-top: 20px;
     padding-right: 10px;
+    margin-top: auto;
+    font-size: 11px;
 }
 
-.content {
+.popularcontent {
     width: 70%;
     height: auto;
     margin: auto;
     padding-top: 200px;
 }
 
-.content h2 {
+.popularcontent h2 {
     margin: 40px ;
     font-weight: 800;
 }
@@ -76,15 +93,66 @@
     flex-direction: column;
 }
 
+.cardtext {
+    height: 50%;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+}
+
 .articlebanner a {
     text-decoration: none;
     color: blanchedalmond;
     text-align: right;
     padding-top: 20px;
     padding-right: 10px;
+
 }
 
 
 .populararticles h3 {
     margin: 20px 0px;;
+}
+
+
+@media screen and (max-width: 600px) {
+    .banner {
+        width: 100%;
+    }
+
+    .bannerimage {
+        height: 400px;
+    }
+
+    .latestarticle {
+        top: 30%;
+        left: 0;
+        max-width: 250px;
+        min-width: 220px;
+        box-shadow: 3px 3px #888888;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .popularcontent {
+        width: 90%;
+        text-align: center;
+    }
+
+    .popularcontent h2 {
+        margin: 40px ;
+        font-weight: 800;
+        font-size: 25px;
+    }
+
+    .populararticles {
+        width: 90%;
+        grid-template-columns: repeat(1, 1fr);
+        margin: auto;
+    }
+
+    .articlebanner {
+        box-shadow: 3px 3px #888888 ;
+    }
+
 }

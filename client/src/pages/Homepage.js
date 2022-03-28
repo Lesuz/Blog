@@ -1,8 +1,8 @@
 import handcuffed from '../images/handcuffs.jpg'
-import '../styles/Homepage.css'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import '../styles/Homepage.css'
 
 import ArticleCard from '../components/ArticleCard'
 
@@ -32,14 +32,14 @@ const Homepage = () => {
             <div className='banner'>
                 <img className='bannerimage' src={handcuffed} alt='newest article pic' />
                 <div className='latestarticle'>
-                    {articles.length >= 1 && <div>
+                    {articles.length >= 1 && <div className='latestarticlecontent'>
                         <h3>{articles[0].title}</h3>
                         <p>{articles[0].description}</p>
-                        <Link className="readmorelink" to={`article/${articles[0].id}`} >Read more...</Link>
+                        <Link className="readmorelink" to={`article/${articles[0].id}`} >READ MORE</Link>
                     </div>}
                 </div>
             </div>
-            <div className='content'>
+            <div className='popularcontent'>
                 <h2>Other Popular Articles</h2>
                 <div className='populararticles'>
                     {articles.slice(1, 3).map(article =>

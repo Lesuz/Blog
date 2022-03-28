@@ -33,6 +33,10 @@ const Articles = () => {
         setFilteredArticles(articlesCopy)
     }, [searchedArticle, articles])
 
+    const changeOrder = () => {
+        setFilteredArticles(filteredArticles.reverse())
+    }
+
     return (
         <div className='articles'>
             <div className='searchbar'>
@@ -44,14 +48,18 @@ const Articles = () => {
                     onChange={handleChange}
                 />
             </div>
-            <div className='articlecontent'>
+            <div className='articlescontent'>
+                <div className='orderby' onClick={changeOrder}>
+                    <p>Newest</p>
+                    <i className="fa fa-arrow-down"></i>
+                </div>
                 <div className='allarticles'>
                     {filteredArticles.map(article =>
                         <ArticleCard key={article.id} article={article} />
                     )}
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

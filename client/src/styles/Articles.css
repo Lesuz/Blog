@@ -35,12 +35,19 @@ i {
     color: #475569;
 }
 
-.articlecontent {
+.articlescontent {
     margin-top: 50px;
     width: 70%;
     height: auto;
     margin: auto;
     padding-top: 100px;
+}
+
+.orderby {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
 }
 
 .allarticles {
@@ -61,6 +68,32 @@ i {
     padding-right: 10px;
 }
 
+.cardtext {
+    text-align: left;
+    height: 60%;
+}
+
 .articlebanner {
   background-blend-mode: hard-light ;
+}
+
+@media screen and (max-width: 600px) {
+    .articles {
+        margin-top: 0;
+    }
+
+    .searchbar {
+        padding-top: 100px;
+    }
+
+    .articlescontent {
+        margin-top: 0px;
+        padding-top: 50px;
+    }
+
+    .allarticles {
+        grid-template-columns: repeat(1, 1fr);
+        font-size: 15px;
+    }
+
 }

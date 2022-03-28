@@ -32,3 +32,32 @@
 .news p {
     margin-top: 20px;
 }
+
+@media screen and (max-width: 600px) {
+    .othernews {
+        margin: 0px;
+    }
+    .othernewsarticles {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .news {
+        width: 70%;
+    }
+
+    .news h2 {
+        font-size: 22px;
+    }
+
+    .news h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .news p {
+        font-weight:bold;
+        line-height: 20px;
+    }
+
+}
