@@ -113,7 +113,18 @@ a {
 .populararticles h3 {
     margin: 20px 0px;;
 }
+@media screen and (max-width: 900px) {
 
+    .latestarticle {
+        top: 37%
+    }
+
+    .populararticles {
+        grid-template-columns: repeat(2, 1fr);
+        margin: auto;
+
+    }
+}
 
 @media screen and (max-width: 600px) {
     .banner {

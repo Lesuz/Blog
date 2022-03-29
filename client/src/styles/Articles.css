@@ -77,6 +77,27 @@ i {
   background-blend-mode: hard-light ;
 }
 
+@media screen and (max-width: 900px) {
+    .searchbar {
+        padding-top: 0px;
+    }
+
+    .searchbar input {
+        width: 400px;
+        font-size: 18px;
+    }
+
+    .allarticles {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cardtext p {
+    font-size: 15px;
+    margin-top: 5px;
+    height: 70%;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .articles {
         margin-top: 0;

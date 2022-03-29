@@ -33,6 +33,21 @@
     margin-top: 20px;
 }
 
+
+@media screen and (max-width: 900px) {
+
+    .othernews {
+        margin-top: 50px;
+    }
+
+    .othernewsarticles {
+        width: 100%;
+    }
+
+    .news p {
+        font-size: 18px;
+    }
+}
 @media screen and (max-width: 600px) {
     .othernews {
         margin: 0px;
