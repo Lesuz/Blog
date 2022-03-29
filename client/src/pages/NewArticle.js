@@ -5,11 +5,12 @@ import '../styles/NewPost.css'
 
 const NewArticle = () => {
 
+
+    const [post, setPost] = useState()
     const [content, setContent] = useState('')
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [cardImage, setCardImage] = useState('')
-
     // TODO - save input and textare texts into variable to store in the database
     const getTitleHandler = (e) => {
 
@@ -39,6 +40,7 @@ const NewArticle = () => {
         setContent(givenContent)
 
     }
+
     //TODO -confirm cancellation
     /*const cancelAlert = () => {
         if (window.confirm("Do you really want to cancel? All input will be lost.")) {
@@ -48,11 +50,17 @@ const NewArticle = () => {
 
     const submitArticle = () => {
         console.log("I am in submitArticle")
-        axios.post('api/articles/submit', () => {
-
+        axios.post('api/articles/submit', {
+            title: title,
+            content: content,
+            description: description,
+            image: cardImage
         })
-
+        /*.then((response) => {
+            setPost(response.data);
+        }); */
     }
+
 
     // const cancelArticle = () => {
     // }
