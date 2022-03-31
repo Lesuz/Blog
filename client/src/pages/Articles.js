@@ -37,6 +37,18 @@ const Articles = () => {
         setFilteredArticles(filteredArticles.reverse())
     }
 
+    // TODO - add axios patch to clickrate
+
+    const updateClickrate = ({ article }) => {
+
+        const clickrate = article.clickrate
+
+        clickrate = clickrate + 1
+
+        axios.patch()
+
+    }
+
     return (
         <div className='articles'>
             <div className='searchbar'>
@@ -55,7 +67,7 @@ const Articles = () => {
                 </div>
                 <div className='allarticles'>
                     {filteredArticles.map(article =>
-                        <ArticleCard key={article.id} article={article} />
+                        <ArticleCard key={article.id} article={article} onClick={updateClickrate} />
                     )}
                 </div>
             </div>

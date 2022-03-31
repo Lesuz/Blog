@@ -16,14 +16,18 @@ const EditNews = () => {
             .then((response) => {
                 console.log(response.data)
                 const allNews = response.data
-                allNews.sort((a, b) => {
-                    return Date.parse(b.release_date) - Date.parse(a.release_date)
-                })
                 setNews(allNews)
             })
     }
 
     useEffect(() => getNews(), [])
+
+    const deleteNews = (id) => {
+        console.log(id)
+        axios.delete(`/api/othernews/${id}`, () => {
+        })
+        console.log("news deleted!")
+    }
 
     const handleChange = (event) => {
         setSearchedNews(event.target.value)
@@ -35,6 +39,7 @@ const EditNews = () => {
             news.title.toLowerCase().includes(searchedNews.toLowerCase()))
         setFilteredNews(newsCopy)
     }, [searchedNews, news])
+
 
     return (
         <div className='editarticleswrapper'>
@@ -52,7 +57,7 @@ const EditNews = () => {
             <div className='editarticlecontent'>
                 <div className='editallarticles'>
                     {filteredNews.map(news =>
-                        <EditArticleCard key={news.id} article={news} />
+                        <EditArticleCard key={news.id} article={news} deletePost={(() => deleteNews(news.id))} />
                     )}
                 </div>
             </div>

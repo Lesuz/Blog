@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import 'font-awesome/css/font-awesome.min.css'
 
-const EditArticleCard = ({ article, deleteArticle }) => {
+const EditArticleCard = ({ article, deletePost }) => {
 
     // const { deleteArticle } = props
     // const [error, setError] = useState('')
@@ -9,14 +9,13 @@ const EditArticleCard = ({ article, deleteArticle }) => {
     return (
         <div className='editarticlecard'>
             <Link to={{
-                pathname: "/article",
-                state: article
+                pathname: `editarticle/${article.id}`
             }}>
                 <div className='editarticle' key={article.id} >
                     <h3>{article.title}</h3>
                 </div>
             </Link>
-            <div onClick={deleteArticle}>
+            <div onClick={deletePost}>
                 <i className="fa fa-trash fa-2x" />
             </div>
         </div >

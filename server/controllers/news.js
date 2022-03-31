@@ -16,7 +16,7 @@ newsRouter.post('/submit', async (req, res) => {
 
     const body = req.body
 
-    const news = new Othernews({
+    const news = new News({
         title: body.title,
         content: body.content,
         release_date: new Date(),
@@ -33,15 +33,15 @@ newsRouter.post('/submit', async (req, res) => {
 
 })
 
-newsRouter.get('/othernews/:id', (req, res) => {
+newsRouter.delete('/:id', async (req, res) => {
 
-})
+    let id = req.params.id
 
-newsRouter.post('/othernews/:id', (req, res) => {
+    await News.findByIdAndDelete(id, (err, results) => {
+        if (err) console.log(err)
 
-})
-
-newsRouter.delete('/othernews/:id', (req, res) => {
+        res.status(200).json(results)
+    })
 
 })
 module.exports = newsRouter

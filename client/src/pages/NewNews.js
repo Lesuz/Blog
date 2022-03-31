@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import '../styles/NewPost.css'
@@ -18,7 +19,6 @@ const NewNews = () => {
         const givenTitle = e.target.value
         console.log(givenTitle)
         setTitle(givenTitle)
-
     }
 
     const getContentHandler = (e) => {
@@ -26,7 +26,14 @@ const NewNews = () => {
         const givenContent = e.target.value
         console.log(givenContent)
         setContent(givenContent)
+    }
 
+    const submitNews = () => {
+        console.log("I am in submitNews")
+        axios.post('api/othernews/submit', {
+            title: title,
+            content: content
+        })
     }
     return (
         <div className='newpostwrapper'>
@@ -35,7 +42,7 @@ const NewNews = () => {
                     <button>Cancel</button>
                 </Link>
                 <h2>New Article</h2>
-                <button>Submit</button>
+                <button onClick={submitNews}>Submit</button>
             </div>
             <div className='newpostform'>
                 <div>

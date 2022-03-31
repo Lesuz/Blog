@@ -15,6 +15,8 @@ app.use(express.urlencoded({
 const articleRouter = require('./controllers/articles')
 app.use('/api/articles', articleRouter)
 
+app.use('/api/editarticle', articleRouter)
+
 const newsRouter = require('./controllers/news')
 app.use('/api/othernews', newsRouter)
 

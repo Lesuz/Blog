@@ -51,9 +51,13 @@ articleRouter.get('/:id', async (req, res) => {
 
 })
 
-articleRouter.post('/:id', (req, res) => {
+articleRouter.patch('/patch', async (req, res) => {
 
 })
+
+/*articleRouter.post('/:id', (req, res) => {
+
+})*/
 
 articleRouter.delete('/:id', async (req, res) => {
 

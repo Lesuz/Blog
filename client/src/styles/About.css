@@ -146,3 +146,14 @@
         margin: auto;
     } 
 }
+
+@media screen and (min-width: 900px) {
+    
+    .aboutbanner {
+        width: 60%;
+    }
+
+    .about-content {
+        width: 50%;
+    }
+}

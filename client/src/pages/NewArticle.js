@@ -5,8 +5,6 @@ import '../styles/NewPost.css'
 
 const NewArticle = () => {
 
-
-    const [post, setPost] = useState()
     const [content, setContent] = useState('')
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -56,9 +54,6 @@ const NewArticle = () => {
             description: description,
             image: cardImage
         })
-        /*.then((response) => {
-            setPost(response.data);
-        }); */
     }
 
 

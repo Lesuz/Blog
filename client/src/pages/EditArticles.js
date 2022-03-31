@@ -20,18 +20,16 @@ const EditArticles = () => {
             })
     }
 
+    useEffect(() => getArticles(), [])
+
     const deleteArticle = (id) => {
         console.log(id)
-        // const newAllArticles = articles.filter((article) => article.id !== id)
-        // setArticles(newAllArticles)
-
         axios.delete(`/api/articles/${id}`, () => {
-
         })
         console.log("I am in deleteArticle!")
     }
 
-    useEffect(() => getArticles(), [])
+
 
     const handleChange = (event) => {
         setSearchedArticle(event.target.value)
@@ -61,7 +59,7 @@ const EditArticles = () => {
             <div className='editarticlecontent'>
                 <div className='editallarticles'>
                     {filteredArticles.map(article =>
-                        <EditArticleCard key={article.id} article={article} deleteArticle={(() => deleteArticle(article.id))} />
+                        <EditArticleCard key={article.id} article={article} deletePost={(() => deleteArticle(article.id))} />
                     )}
                 </div>
             </div>
