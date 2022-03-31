@@ -56,5 +56,33 @@
 }
 
 @media screen and (min-width: 900px) {
+
+    .articlecontent {
+        margin-top: 70px;
+        margin-bottom: 200px;
+    }
     
+    .title {
+        color: #692A6C;
+        font-size: 35px;
+    }
+    
+    .date {
+        color: #BB9BB0;
+        font-size: 25px;
+        font-style: italic;
+    }
+    
+    .content {
+        margin: 200px auto;
+        width: 40%;
+    }
+
+    .content p {
+        padding-top: 20px;
+        font-size: 18px;
+        width: 100%;
+        margin: auto;
+    }
+
 }
