@@ -3,7 +3,6 @@ const articleRouter = require('express').Router()
 // import mongoose model
 const Article = require('../models/article')
 
-
 articleRouter.get('/all', async (req, res) => {
 
     const results = await Article.find()
@@ -51,13 +50,18 @@ articleRouter.get('/:id', async (req, res) => {
 
 })
 
-articleRouter.patch('/patch', async (req, res) => {
+articleRouter.put('/:id', async (req, res) => {
 
-})
+    const id = req.params.id
+    console.log(id)
+    const body = req.body
+    console.log(body)
 
-/*articleRouter.post('/:id', (req, res) => {
-
-})*/
+    Article.findByIdAndUpdate({ _id: req.params.id }, body, { new: true })
+        .then(updatedArticle => res.json(updatedArticle))
+        .catch(err => res.status(400).json("Error: " + err))
+}
+)
 
 articleRouter.delete('/:id', async (req, res) => {
 

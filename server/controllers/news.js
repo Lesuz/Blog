@@ -33,6 +33,18 @@ newsRouter.post('/submit', async (req, res) => {
 
 })
 
+newsRouter.put('/:id', async (req, res) => {
+
+    const id = req.params.id
+    console.log(id)
+    const body = req.body
+    console.log(body)
+
+    Article.findByIdAndUpdate({ _id: req.params.id }, body, { new: true })
+        .then(updatedArticle => res.json(updatedArticle))
+        .catch(err => res.status(400).json("Error: " + err))
+})
+
 newsRouter.delete('/:id', async (req, res) => {
 
     let id = req.params.id

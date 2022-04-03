@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import EditArticleCard from '../components/EditArticleCard'
+import EditNewsCard from '../components/EditNewsCard'
 import '../styles/EditArticles.css'
 import 'font-awesome/css/font-awesome.min.css'
 
@@ -57,7 +57,7 @@ const EditNews = () => {
             <div className='editarticlecontent'>
                 <div className='editallarticles'>
                     {filteredNews.map(news =>
-                        <EditArticleCard key={news.id} article={news} deletePost={(() => deleteNews(news.id))} />
+                        <EditNewsCard key={news.id} news={news} deletePost={(() => deleteNews(news.id))} />
                     )}
                 </div>
             </div>

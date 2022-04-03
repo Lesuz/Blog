@@ -15,6 +15,7 @@ import EditNews from './pages/EditNews';
 import NewArticle from './pages/NewArticle'
 import NewNews from './pages/NewNews'
 import EditArticle from './pages/EditArticle'
+import EditNewsArticle from './pages/EditNewsArticle';
 
 function App() {
 
@@ -35,7 +36,8 @@ function App() {
                     <Route path="/editnews" component={EditNews} />
                     <Route path="/newarticle" component={NewArticle} />
                     <Route path="/newnews" component={NewNews} />
-                    <Route path="/editarticle" component={EditArticle} />
+                    <Route path="/editarticle/:id" component={EditArticle} />
+                    <Route path="/editnews/:id" component={EditNewsArticle} />
                     <Route path="/*" component={Homepage} />
                 </Switch>
                 <Footer />

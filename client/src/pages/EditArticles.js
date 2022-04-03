@@ -28,9 +28,6 @@ const EditArticles = () => {
         })
         console.log("I am in deleteArticle!")
     }
-
-
-
     const handleChange = (event) => {
         setSearchedArticle(event.target.value)
     }
