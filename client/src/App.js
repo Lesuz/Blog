@@ -21,6 +21,7 @@ function App() {
 
     const [token, setToken] = useState()
 
+    // return all possible routes the frontend has
     return (
         <div className="App">
             <Router>

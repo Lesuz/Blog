@@ -17,9 +17,8 @@ const EditArticle = () => {
 
     const [loading, setLoading] = useState(true)
     const [notFound, setNotFound] = useState(false)
-    // TODO - save input and textare texts into variable to store in the database
 
-
+    // get article by id from tha databse
     useEffect(() => {
         setLoading(true)
         setNotFound(false)
@@ -36,6 +35,7 @@ const EditArticle = () => {
             })
     }, [id, setLoading, setNotFound, setArticle])
 
+    // handlers to handle every change in the input fields and save them to their variables
     const getTitleHandler = (e) => {
         const givenTitle = e.target.value
         console.log(givenTitle)
@@ -57,6 +57,7 @@ const EditArticle = () => {
         setContent(givenContent)
     }
 
+    // send updated article to the database
     const updateArticle = () => {
         console.log("I am in updateArticle")
         axios.put(`/api/articles/${id}`, {

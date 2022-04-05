@@ -11,6 +11,8 @@ const EditArticles = () => {
     const [articles, setArticles] = useState([])
     const [filteredArticles, setFilteredArticles] = useState([])
 
+
+    // get all articles from the database
     const getArticles = () => {
         axios.get('/api/articles/all')
             .then((response) => {
@@ -22,8 +24,8 @@ const EditArticles = () => {
 
     useEffect(() => getArticles(), [])
 
+    // function to delete article by id
     const deleteArticle = (id) => {
-        console.log(id)
         axios.delete(`/api/articles/${id}`, () => {
         })
         console.log("I am in deleteArticle!")
@@ -31,7 +33,7 @@ const EditArticles = () => {
     const handleChange = (event) => {
         setSearchedArticle(event.target.value)
     }
-
+    // make a copy of the articles -array in the database that can be used to filter by the searchword
     useEffect(() => {
         let articlesCopy = [...articles]
         articlesCopy = articlesCopy.filter(article =>

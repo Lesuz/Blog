@@ -9,43 +9,33 @@ const NewArticle = () => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [cardImage, setCardImage] = useState('')
-    // TODO - save input and textare texts into variable to store in the database
-    const getTitleHandler = (e) => {
 
+    // handlers to handle every change in the input fields and save them to their variables
+    const getTitleHandler = (e) => {
         const givenTitle = e.target.value
         console.log(givenTitle)
         setTitle(givenTitle)
-
     }
-    const getDescHandler = (e) => {
 
+    const getDescHandler = (e) => {
         const givenDesc = e.target.value
         console.log(givenDesc)
         setDescription(givenDesc)
-
     }
-    const getImageHandler = (e) => {
 
+    const getImageHandler = (e) => {
         const givenImageUrl = e.target.value
         console.log(givenImageUrl)
         setCardImage(givenImageUrl)
-
     }
-    const getContentHandler = (e) => {
 
+    const getContentHandler = (e) => {
         const givenContent = e.target.value
         console.log(givenContent)
         setContent(givenContent)
-
     }
 
-    //TODO -confirm cancellation
-    /*const cancelAlert = () => {
-        if (window.confirm("Do you really want to cancel? All input will be lost.")) {
-            window.location("/editarticles")
-        }
-    } */
-
+    // function that submits article to be posted into the database
     const submitArticle = () => {
         console.log("I am in submitArticle")
         axios.post('api/articles/submit', {
@@ -55,10 +45,6 @@ const NewArticle = () => {
             image: cardImage
         })
     }
-
-
-    // const cancelArticle = () => {
-    // }
 
     return (
         <div className='newpostwrapper'>

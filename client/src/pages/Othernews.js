@@ -4,6 +4,7 @@ import '../styles/Othernews.css'
 
 const moment = require('moment')
 
+// a re-usable component of how to display one news
 const News = ({ news }) => {
 
     return (
@@ -19,6 +20,7 @@ const Othernews = () => {
 
     const [news, setNews] = useState([])
 
+    // get the news articles by using axios and sending a request to the server - articles are saved into the variable "news"
     const getNews = () => {
         axios.get('/api/othernews')
             .then((response) => {

@@ -14,6 +14,7 @@ const Article = () => {
     const [loading, setLoading] = useState(true)
     const [notFound, setNotFound] = useState(false)
 
+    // get article by id
     useEffect(() => {
         setLoading(true)
         setNotFound(false)
@@ -24,6 +25,7 @@ const Article = () => {
                 setLoading(false)
             })
             .catch(err => {
+                console.log(err)
                 setLoading(false)
                 setNotFound(true)
             })

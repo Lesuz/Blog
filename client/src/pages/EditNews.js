@@ -11,6 +11,7 @@ const EditNews = () => {
     const [news, setNews] = useState([])
     const [filteredNews, setFilteredNews] = useState([])
 
+    // get all news from the database
     const getNews = () => {
         axios.get('/api/othernews')
             .then((response) => {
@@ -22,17 +23,16 @@ const EditNews = () => {
 
     useEffect(() => getNews(), [])
 
+    // function to delete news article by id
     const deleteNews = (id) => {
-        console.log(id)
         axios.delete(`/api/othernews/${id}`, () => {
         })
-        console.log("news deleted!")
     }
 
     const handleChange = (event) => {
         setSearchedNews(event.target.value)
     }
-
+    // make a copy of the news -array in the database that can be used to filter by the searchword
     useEffect(() => {
         let newsCopy = [...news]
         newsCopy = newsCopy.filter(news =>

@@ -11,6 +11,7 @@ const Articles = () => {
     const [articles, setArticles] = useState([])
     const [filteredArticles, setFilteredArticles] = useState([])
 
+    // get all articles and save them into "articles" -variable
     const getArticles = () => {
         axios.get('/api/articles/all')
             .then((response) => {
@@ -37,16 +38,12 @@ const Articles = () => {
         setFilteredArticles(filteredArticles.reverse())
     }
 
-    // TODO - add axios patch to clickrate
+    // TODO clickrate
 
     const updateClickrate = ({ article }) => {
-
         const clickrate = article.clickrate
-
         clickrate = clickrate + 1
-
         axios.patch()
-
     }
 
     return (

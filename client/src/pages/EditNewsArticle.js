@@ -15,7 +15,7 @@ const EditNewsArticle = () => {
 
     const [loading, setLoading] = useState(true)
     const [notFound, setNotFound] = useState(false)
-    // TODO - save input and textare texts into variable to store in the database
+
 
 
     useEffect(() => {

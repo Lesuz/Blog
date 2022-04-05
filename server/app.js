@@ -12,11 +12,9 @@ app.use(express.urlencoded({
     extended: true
 }));
 
+// routes to what controllers to use
 const articleRouter = require('./controllers/articles')
 app.use('/api/articles', articleRouter)
-
-const editArticleRouter = require('./controllers/editarticles')
-app.use('/api/editarticles', editArticleRouter)
 
 const newsRouter = require('./controllers/news')
 app.use('/api/othernews', newsRouter)

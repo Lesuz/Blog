@@ -3,18 +3,21 @@ const articleRouter = require('express').Router()
 // import mongoose model
 const Article = require('../models/article')
 
+// route to get all articles
 articleRouter.get('/all', async (req, res) => {
 
+    // save all articles into a varibale that is send as a response to the request made in the frontend
     const results = await Article.find()
 
-    console.log(results)
     res.status(200).json(results)
 })
 
+// route to make a new article post and save it into the database
 articleRouter.post('/submit', async (req, res) => {
 
     const body = req.body
 
+    // sainvg the data given in the frontend into variables given by the controller
     const article = new Article({
         title: body.title,
         description: body.description,
@@ -25,6 +28,7 @@ articleRouter.post('/submit', async (req, res) => {
         clickrate: 0
     })
 
+    // try to save the information into the database or give error
     try {
         await article.save()
         res.status(200).json(article)
@@ -34,11 +38,12 @@ articleRouter.post('/submit', async (req, res) => {
     }
 })
 
+// route to get article by id
 articleRouter.get('/:id', async (req, res) => {
 
     const id = req.params.id
-    console.log(id)
 
+    // try to get the article by id or give error message
     try {
         const results = await Article.findById(id)
         console.log(results)
@@ -50,26 +55,27 @@ articleRouter.get('/:id', async (req, res) => {
 
 })
 
+// route to edit existing article
 articleRouter.put('/:id', async (req, res) => {
 
-    const id = req.params.id
-    console.log(id)
     const body = req.body
-    console.log(body)
 
+    // find article by id and update only the parts that have changed
     Article.findByIdAndUpdate({ _id: req.params.id }, body, { new: true })
         .then(updatedArticle => res.json(updatedArticle))
         .catch(err => res.status(400).json("Error: " + err))
-}
-)
+})
 
+// route to delete article by id
 articleRouter.delete('/:id', async (req, res) => {
 
+    // get the news article id
     let id = req.params.id
 
+    // find the article by id and delete it
     await Article.findByIdAndDelete(id, (err, results) => {
+        // if deletion fails, error message is send into console
         if (err) console.log(err)
-
         res.status(200).json(results)
     })
 })

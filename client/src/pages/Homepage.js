@@ -8,10 +8,9 @@ import ArticleCard from '../components/ArticleCard'
 
 const Homepage = () => {
 
-    //articles has all articles in the newest to oldest reinfolge
     const [articles, setArticles] = useState([])
-    // const [filteredArticles, setFilteredArticles] = useState([])
 
+    // get all articles from the database and change the order from newest to oldest
     const getArticles = () => {
         axios.get('/api/articles/all')
             .then((response) => {
@@ -23,7 +22,6 @@ const Homepage = () => {
                 setArticles(allArticles)
             })
     }
-
     useEffect(() => getArticles(), [])
 
 

@@ -9,25 +9,20 @@ const NewNews = () => {
     const [title, setTitle] = useState('')
 
     //TODO -confirm cancellation
-    //const cancelAlert = () => {
-    //    if (window.confirm("Do you really want to cancel? All input will be lost.")) {
-    //        window.location("/editarticles")
-    //    }
-    //}
-    const getTitleHandler = (e) => {
 
+    // handlers to handle every change in the input fields and save them to their variables
+    const getTitleHandler = (e) => {
         const givenTitle = e.target.value
         console.log(givenTitle)
         setTitle(givenTitle)
     }
-
     const getContentHandler = (e) => {
-
         const givenContent = e.target.value
         console.log(givenContent)
         setContent(givenContent)
     }
 
+    // function that submits news to be posted into the database
     const submitNews = () => {
         console.log("I am in submitNews")
         axios.post('api/othernews/submit', {
@@ -35,6 +30,7 @@ const NewNews = () => {
             content: content
         })
     }
+
     return (
         <div className='newpostwrapper'>
             <div className='topheader'>
