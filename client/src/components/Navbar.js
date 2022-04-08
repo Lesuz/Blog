@@ -25,8 +25,6 @@ const Navbar = () => {
     return (
         <nav>
             <div className='menu-icon' onClick={handleClick}>
-                {/*<div className='fa-stack' size={20} onClick={handleClick}>
-                <i className='fa fa-circle fa-stack-2x icon-background'></i> */}
                 <i className={toggleMenu ? 'fa fa-times' : 'fa fa-bars'}></i>
             </div>
             <div className='logo'>

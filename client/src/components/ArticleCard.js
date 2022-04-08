@@ -14,9 +14,6 @@ const ArticleCard = ({ article }) => {
                 <div className='cardtext'>
                     <h3>{article.title}</h3>
                     <p>{article.description}</p>
-                    {/*
-                    <p className='readmorelink'>READ MORE</p>
-                    */}
                 </div>
             </div>
         </Link>

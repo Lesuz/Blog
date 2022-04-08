@@ -23,7 +23,6 @@ const EditNewsArticle = () => {
         setNotFound(false)
         axios.get(`/api/othernews/${id}`)
             .then((response) => {
-                console.log(response.data)
                 setArticle(response.data)
                 setLoading(false)
             })

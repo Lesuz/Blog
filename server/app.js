@@ -4,6 +4,7 @@ const app = express()
 const config = require('./config')
 const path = require('path')
 const mongoose = require('mongoose')
+const middleware = require('./middleWare')
 const cors = require('cors') //im not sure this is needed
 
 // parse json bodies sent by api clients
@@ -12,6 +13,8 @@ app.use(express.urlencoded({
     extended: true
 }));
 
+app.use(middleware.tokenExtractor)
+
 // routes to what controllers to use
 const articleRouter = require('./controllers/articles')
 app.use('/api/articles', articleRouter)
@@ -19,11 +22,8 @@ app.use('/api/articles', articleRouter)
 const newsRouter = require('./controllers/news')
 app.use('/api/othernews', newsRouter)
 
-app.use('/api/signin', (req, res) => {
-    res.send({
-        token: 'test123'
-    })
-})
+const userRouter = require('./controllers/users')
+app.use('/api/user', userRouter)
 
 // connecting to database
 mongoose.connect(config.MONGODB_URI, {});

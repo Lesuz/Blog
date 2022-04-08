@@ -2,7 +2,6 @@ import '../styles/Articles.css'
 import 'font-awesome/css/font-awesome.min.css'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-
 import ArticleCard from '../components/ArticleCard'
 
 const Articles = () => {

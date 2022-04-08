@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import '../styles/NewPost.css'
+import adminService from '../services/adminService'
 
 const EditArticle = () => {
 
@@ -24,7 +25,6 @@ const EditArticle = () => {
         setNotFound(false)
         axios.get(`/api/articles/${id}`)
             .then((response) => {
-                console.log(response.data)
                 setArticle(response.data)
                 setLoading(false)
             })
@@ -58,20 +58,21 @@ const EditArticle = () => {
     }
 
     // send updated article to the database
-    const updateArticle = () => {
+    const updateArticle = async () => {
         console.log("I am in updateArticle")
-        axios.put(`/api/articles/${id}`, {
-            title: title,
-            description: description,
-            image: cardImage,
-            content: content
-        })
-            .then(response => {
-                console.log(response)
+
+        try {
+            const res = await adminService.patchArticle(id, {
+                title,
+                description,
+                image: cardImage,
+                content
             })
-            .catch(error => {
-                console.log(error.response)
-            })
+
+            console.log(res)
+        } catch (err) {
+            console.log(err.response)
+        }
     }
 
     if (loading) {
@@ -88,7 +89,6 @@ const EditArticle = () => {
         )
     }
     else if (article) {
-
         return (
             <div className='newpostwrapper'>
                 <div className='topheader'>

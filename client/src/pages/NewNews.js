@@ -1,12 +1,14 @@
-import axios from 'axios'
 import { useState } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import adminService from '../services/adminService'
 import '../styles/NewPost.css'
 
 const NewNews = () => {
 
     const [content, setContent] = useState('')
     const [title, setTitle] = useState('')
+
+    const history = useHistory()
 
     //TODO -confirm cancellation
 
@@ -25,10 +27,12 @@ const NewNews = () => {
     // function that submits news to be posted into the database
     const submitNews = () => {
         console.log("I am in submitNews")
-        axios.post('api/othernews/submit', {
+        const res = adminService.createArticle({
             title: title,
             content: content
         })
+
+        history.push('/othernews')
     }
 
     return (

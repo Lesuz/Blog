@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
+import { Link, useHistory } from 'react-router-dom'
 import '../styles/NewPost.css'
+import adminService from '../services/adminService'
 
 const NewArticle = () => {
 
@@ -9,6 +9,8 @@ const NewArticle = () => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [cardImage, setCardImage] = useState('')
+
+    const history = useHistory()
 
     // handlers to handle every change in the input fields and save them to their variables
     const getTitleHandler = (e) => {
@@ -36,14 +38,17 @@ const NewArticle = () => {
     }
 
     // function that submits article to be posted into the database
-    const submitArticle = () => {
+    const submitArticle = async () => {
+        // try catch
         console.log("I am in submitArticle")
-        axios.post('api/articles/submit', {
-            title: title,
-            content: content,
-            description: description,
+        const res = await adminService.createArticle({
+            title,
+            content,
+            description,
             image: cardImage
         })
+
+        history.push(`/article/${res.id}`)
     }
 
     return (

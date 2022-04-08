@@ -2,7 +2,7 @@ import './App.css';
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { useState } from 'react';
+import PrivateRoute from './components/PrivateRoute'
 
 import Homepage from './pages/Homepage'
 import Articles from './pages/Articles'
@@ -19,8 +19,7 @@ import EditNewsArticle from './pages/EditNewsArticle';
 
 function App() {
 
-    const [token, setToken] = useState()
-
+    // use PrivateRoute to check if signed in
     // return all possible routes the frontend has
     return (
         <div className="App">
@@ -33,12 +32,12 @@ function App() {
                     <Route path="/about" component={About} />
                     <Route path="/article/:id" component={Article} />
                     <Route path="/signin" component={SignIn} />
-                    <Route path="/editarticles" component={EditArticles} />
-                    <Route path="/editnews" component={EditNews} />
-                    <Route path="/newarticle" component={NewArticle} />
-                    <Route path="/newnews" component={NewNews} />
-                    <Route path="/editarticle/:id" component={EditArticle} />
-                    <Route path="/editnews/:id" component={EditNewsArticle} />
+                    <PrivateRoute path="/editarticles" component={EditArticles} />
+                    <PrivateRoute path="/editnews" component={EditNews} />
+                    <PrivateRoute path="/newarticle" component={NewArticle} />
+                    <PrivateRoute path="/newnews" component={NewNews} />
+                    <PrivateRoute path="/editarticle/:id" component={EditArticle} />
+                    <PrivateRoute path="/editnews/:id" component={EditNewsArticle} />
                     <Route path="/*" component={Homepage} />
                 </Switch>
                 <Footer />

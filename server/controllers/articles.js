@@ -15,16 +15,19 @@ articleRouter.get('/all', async (req, res) => {
 // route to make a new article post and save it into the database
 articleRouter.post('/submit', async (req, res) => {
 
+    if (!req.isAdmin)
+        return res.status(401).json({ message: 'Protected route!' })
+
     const body = req.body
 
-    // sainvg the data given in the frontend into variables given by the controller
+    // saving the data given in the frontend into variables given by the controller
     const article = new Article({
         title: body.title,
         description: body.description,
         content: body.content,
         image: body.image,
         release_date: new Date(),
-        authorId: '5f87ac56842e500d044853dd',
+        authorId: req.token.id,
         clickrate: 0
     })
 
@@ -58,6 +61,9 @@ articleRouter.get('/:id', async (req, res) => {
 // route to edit existing article
 articleRouter.put('/:id', async (req, res) => {
 
+    if (!req.isAdmin)
+        return res.status(401).json({ message: 'Protected route!' })
+
     const body = req.body
 
     // find article by id and update only the parts that have changed
@@ -68,6 +74,9 @@ articleRouter.put('/:id', async (req, res) => {
 
 // route to delete article by id
 articleRouter.delete('/:id', async (req, res) => {
+
+    if (!req.isAdmin)
+        return res.status(401).json({ message: 'Protected route!' })
 
     // get the news article id
     let id = req.params.id

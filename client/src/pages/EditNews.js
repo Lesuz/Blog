@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import EditNewsCard from '../components/EditNewsCard'
 import '../styles/EditArticles.css'
 import 'font-awesome/css/font-awesome.min.css'
+import adminService from '../services/adminService'
 
 const EditNews = () => {
 
     const [searchedNews, setSearchedNews] = useState('')
     const [news, setNews] = useState([])
     const [filteredNews, setFilteredNews] = useState([])
+
+    let history = useHistory()
 
     // get all news from the database
     const getNews = () => {
@@ -25,8 +28,7 @@ const EditNews = () => {
 
     // function to delete news article by id
     const deleteNews = (id) => {
-        axios.delete(`/api/othernews/${id}`, () => {
-        })
+        const res = adminService.deleteNews(id)
     }
 
     const handleChange = (event) => {
@@ -40,11 +42,15 @@ const EditNews = () => {
         setFilteredNews(newsCopy)
     }, [searchedNews, news])
 
+    const signOut = () => {
+        localStorage.removeItem('token')
+        history.push('/')
+    }
 
     return (
         <div className='editarticleswrapper'>
             <div className='editarticlesearch'>
-                <h2>Sign Out</h2>
+                <h2 onClick={signOut}>Sign Out</h2>
                 <div className='links'>
                     <Link to="/editarticles">Articles</Link>
                     <Link to="/editnews">News</Link>

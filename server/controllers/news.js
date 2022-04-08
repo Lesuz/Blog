@@ -15,6 +15,9 @@ newsRouter.get('/', async (req, res) => {
 // route to post new news article to the databse
 newsRouter.post('/submit', async (req, res) => {
 
+    if (!req.isAdmin)
+        return res.status(401).json({ message: 'Protected route!' })
+
     const body = req.body
 
     // sainvg the data given in the frontend into variables given by the controller
@@ -22,7 +25,7 @@ newsRouter.post('/submit', async (req, res) => {
         title: body.title,
         content: body.content,
         release_date: new Date(),
-        authorId: '5f87ac56842e500d044853dd'
+        authorId: req.token.id
     })
 
     // try to save the information into the database or give error
@@ -67,6 +70,9 @@ newsRouter.post('/submit', async (req, res) => {
 
 // delete news article from the database
 newsRouter.delete('/:id', async (req, res) => {
+
+    if (!req.isAdmin)
+        return res.status(401).json({ message: 'Protected route!' })
 
     // get the news article id
     let id = req.params.id

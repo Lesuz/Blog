@@ -1,32 +1,28 @@
 import axios from 'axios'
-import PropTypes from 'prop-types'
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import '../styles/SignIn.css'
 
-async function signinUser(credentials) {
-    return fetch('/api/signin', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(credentials)
-    })
-        .then(data => data.json())
-}
+const SignIn = () => {
 
-const SignIn = ({ setToken }) => {
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
-    const [username, setUsername] = useState()
-    const [password, setPassword] = useState()
+    const history = useHistory()
 
     const handleSubmit = async e => {
-        e.preventDefault();
-        const token = await signinUser({
-            username,
-            password
-        });
-        setToken(token);
+        e.preventDefault()
+        try {
+            const res = await axios.post('/api/user/signin', {
+                username,
+                password
+            })
+            localStorage.setItem('token', res.data.token)
+            history.push('/editarticles')
+        } catch (err) {
+            console.error(JSON.parse(err.request.response).message)
+        }
     }
 
     return (
@@ -45,10 +41,6 @@ const SignIn = ({ setToken }) => {
             </form>
         </div>
     )
-}
-
-SignIn.propstypes = {
-    setToken: PropTypes.func.isRequired
 }
 
 export default SignIn
