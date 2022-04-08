@@ -31,6 +31,8 @@ const EditArticles = () => {
     const deleteArticle = async (id) => {
         const res = await adminService.deleteArticle(id)
         console.log(res)
+        const newfilteredArticles = filteredArticles.filter((article) => article.id !== res.id)
+        setFilteredArticles(newfilteredArticles)
         console.log("I am in deleteArticle!")
     }
     const handleChange = (event) => {

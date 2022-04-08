@@ -27,8 +27,12 @@ const EditNews = () => {
     useEffect(() => getNews(), [])
 
     // function to delete news article by id
-    const deleteNews = (id) => {
-        const res = adminService.deleteNews(id)
+    const deleteNews = async (id) => {
+        const res = await adminService.deleteNews(id)
+        console.log(res)
+        const newfilteredNews = filteredNews.filter((news) => news.id !== res.id)
+        setFilteredNews(newfilteredNews)
+        console.log("I am in deleteNews!")
     }
 
     const handleChange = (event) => {

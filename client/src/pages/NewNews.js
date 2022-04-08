@@ -25,14 +25,19 @@ const NewNews = () => {
     }
 
     // function that submits news to be posted into the database
-    const submitNews = () => {
+    const submitNews = async () => {
         console.log("I am in submitNews")
-        const res = adminService.createArticle({
-            title: title,
-            content: content
-        })
+        try {
+            const res = await adminService.createNews({
+                title,
+                content
+            })
+            console.log(res)
+            history.push('/othernews')
+        } catch (err) {
+            console.log(err)
+        }
 
-        history.push('/othernews')
     }
 
     return (
@@ -41,7 +46,7 @@ const NewNews = () => {
                 <Link to="/editnews">
                     <button>Cancel</button>
                 </Link>
-                <h2>New Article</h2>
+                <h2>New News</h2>
                 <button onClick={submitNews}>Submit</button>
             </div>
             <div className='newpostform'>
